@@ -1,0 +1,9 @@
+node_modules/
+dist/
+openapi/sage-accounting-3.1.0.patched.json
+*.tgz
+.DS_Store
+.vitest-cache/
+coverage/
+.env
+.env.*

@@ -1,0 +1,65 @@
+{
+  "name": "sage-business-cloud-accounting-api",
+  "version": "0.1.0",
+  "description": "TypeScript SDK for the Sage Business Cloud Accounting API v3.1. Typed from Sage's own spec, OAuth with rotating refresh tokens, pagination, and safe retries. Runs on Node, Cloudflare Workers, Deno and Bun.",
+  "license": "MIT",
+  "author": "Chris John Leah",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisjohnleah/sage-business-cloud-accounting-api-ts.git"
+  },
+  "homepage": "https://github.com/chrisjohnleah/sage-business-cloud-accounting-api-ts#readme",
+  "bugs": {
+    "url": "https://github.com/chrisjohnleah/sage-business-cloud-accounting-api-ts/issues"
+  },
+  "keywords": [
+    "sage",
+    "sage-accounting",
+    "sage-business-cloud",
+    "accounting",
+    "api",
+    "sdk",
+    "typescript",
+    "cloudflare-workers"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "generate": "node scripts/patch-spec.mjs && openapi-typescript openapi/sage-accounting-3.1.0.patched.json -o src/generated/sage.ts",
+    "check:generated": "node scripts/check-generated.mjs",
+    "prepublishOnly": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.17.0"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-plugin": "1.4.2",
+    "@types/node": "22.20.5",
+    "esbuild": "0.28.2",
+    "miniflare": "4.20260730.0",
+    "openapi-typescript": "7.13.0",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
+}
